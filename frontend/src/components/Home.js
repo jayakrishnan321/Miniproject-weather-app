@@ -1,6 +1,6 @@
 import { useState } from "react";
 import React from 'react'
-
+import WeatherCard from "./WeatherCard";
 import axios from "axios"
 import { useNavigate } from "react-router-dom";
 function Home() {
@@ -65,7 +65,7 @@ function Home() {
   </button>
 </div>
       </div>
-    
+      <WeatherCard weather={weather} />
       </div>
   )
 }
