@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-
+import api from "../api";   
 function History() {
     const [history, setHistory] = useState([]);
 
     useEffect(() => {
         const fetchHistory = async () => {
             try {
-                const res = await axios.get("http://localhost:5000/api/weather");
+                const res = await api.get("/weather");
                 const sorted = res.data.sort(
                     (a, b) => new Date(b.searchedAt) - new Date(a.searchedAt)
                 );
@@ -21,7 +21,7 @@ function History() {
     }, []);
     const deleteSearch = async (id) => {
         try {
-            await axios.delete(`http://localhost:5000/api/weather/${id}`);
+            await api.delete(`/weather/${id}`);
             setHistory((prev) => prev.filter((item) => item._id !== id));
         } catch (err) {
             console.error("Error deleting search:", err);

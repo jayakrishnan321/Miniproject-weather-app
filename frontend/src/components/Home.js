@@ -2,6 +2,7 @@ import { useState } from "react";
 import React from 'react'
 import WeatherCard from "./WeatherCard";
 import axios from "axios"
+import api from "../api";
 import { useNavigate } from "react-router-dom";
 function Home() {
     const navigate = useNavigate();
@@ -29,8 +30,9 @@ function Home() {
                     time: new Date().toISOString(),
                 };
 
-                await axios.post("http://localhost:5000/api/weather", newSearch);
+                await api.post("/weather", newSearch);
                 console.log("Search saved to database:", newSearch);
+
 
             } else {
                 setWeather(null);
