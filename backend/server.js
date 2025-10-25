@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 app.use("/api/weather", recentroutes);
 
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log("MongoDB connected succesfully"))
     .catch((err) => console.log(err));
 
